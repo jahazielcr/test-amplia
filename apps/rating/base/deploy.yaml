@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: rating-webapp
+
+spec:
+
+  template:
+    metadata:
+      name: rating-webapp
+
+    spec:
+
+      containers:
+      - name: rating-webapp
+        image: KUSTOMIZE-DEFINIED # "definied by overlays"
+
+        ports:
+        - containerPort: 8080
+          name: rating-webapp
+        resources:
+          limits:
+            cpu: 20m
+            memory: 200Mi
+          requests:
+            cpu: 10m
+            memory: 50Mi

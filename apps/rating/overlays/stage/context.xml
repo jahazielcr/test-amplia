@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Context antiJARLocking="true" path="/rating3">
+    <Resource 
+    auth="Container" 
+    name="jdbc/pgsql_rating" 
+    type="javax.sql.DataSource" 
+    driverClassName="org.postgresql.Driver"
+    url="jdbc:postgresql://postgres/von"
+    username="$DB_USERNAME"
+    password="$DB_PASSWORD"
+    validationQuery="select version()" 
+    removeAbandoned="true"
+    removeAbandonedTimeout="5"
+    logAbandoned="false"
+    maxActive="70" 
+    maxIdle="5" 
+    maxWait = "5000"
+    />
+    
+    <Realm className="org.apache.catalina.realm.JDBCRealm" 
+           connectionURL="jdbc:postgresql://postgres/von?user=$DB_USERNAME&amp;password=$DB_PASSWORD" 
+           digest="MD5" driverName="org.postgresql.Driver" 
+           roleNameCol="role" 
+           digestEncoding="iso-8859-1" 
+           userCredCol="password" 
+           userNameCol="username" 
+           userRoleTable="rating_system.userrole" 
+           userTable="rating_system.users"/>
+</Context>

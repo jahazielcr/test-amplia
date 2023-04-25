@@ -1,0 +1,31 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: stage-rating
+
+commonLabels:
+  app: rating-webapp-stage
+  team: devops
+
+commonAnnotations:
+  note: This is an Stage Deployment
+
+
+resources:
+- ns.yaml
+- ../../base
+
+patches:
+- path: deploy-merge.yaml
+  target:
+    kind: StatefulSet
+    name: rating-webapp
+
+- path: svc-patch.yaml
+  target:
+    name: svc-rating-webapp
+
+images:
+- name: KUSTOMIZE-DEFINIED
+  newName: jcdlo/dev
+  newTag: rating-latest-april
