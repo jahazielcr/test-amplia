@@ -5,4 +5,4 @@ metadata:
   name: rating-webapp
 
 spec: 
-  replicas: 4
+  replicas: 2
